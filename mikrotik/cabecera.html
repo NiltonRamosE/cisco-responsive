@@ -5,112 +5,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
         <style type="text/css">
-            /*----------Text Styles----------*/
-            .ws6 {
-                font-size: 8px;
-            }
-
-            .ws7 {
-                font-size: 9.3px;
-            }
-
-            .ws8 {
-                font-size: 11px;
-            }
-
-            .ws9 {
-                font-size: 12px;
-            }
-
-            .ws10 {
-                font-size: 13px;
-            }
-
-            .ws11 {
-                font-size: 15px;
-            }
-
-            .ws12 {
-                font-size: 16px;
-            }
-
-            .ws14 {
-                font-size: 19px;
-            }
-
-            .ws16 {
-                font-size: 21px;
-            }
-
-            .ws18 {
-                font-size: 24px;
-            }
-
-            .ws20 {
-                font-size: 27px;
-            }
-
-            .ws22 {
-                font-size: 29px;
-            }
-
-            .ws24 {
-                font-size: 32px;
-            }
-
-            .ws26 {
-                font-size: 35px;
-            }
-
-            .ws28 {
-                font-size: 37px;
-            }
-
-            .ws36 {
-                font-size: 48px;
-            }
-
-            .ws48 {
-                font-size: 64px;
-            }
-
-            .ws72 {
-                font-size: 96px;
-            }
-
-            .wpmd {
-                font-size: 13px;
-                font-family: Arial, Helvetica, Sans-Serif;
-                font-style: normal;
-                font-weight: normal;
-            }
-
-            /*----------Para Styles----------*/
-            DIV,
-            UL,
-            OL
-
-            /* Left */
-                {
-                margin-top: 0px;
-                margin-bottom: 0px;
-            }
-            
-            /* Mobile menu styles */
             .mobile-menu {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease-out;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100%;
+                background-color: white;
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s ease-out;
+                z-index: 1000;
+                overflow-y: auto;
             }
-            
+
             .mobile-menu.active {
-                max-height: 1000px;
-                transition: max-height 0.5s ease-in;
+                left: 0;
+                transition: left 0.3s ease-in;
+            }
+
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
+            }
+
+            .overlay.active {
+                display: block;
             }
         </style>
-
     </head>
-
     <body>
         <form name="form1" method="get" action="http://www.ds3comunicaciones.com/find.html"
             enctype="application/x-www-form-urlencoded" style="margin:0px">
@@ -123,31 +52,29 @@
                 <!-- Logotipos - Parte izquierda -->
                 <div class="flex items-center gap-6">
                     <div id="image3" class="w-32">
-                        <img src="http://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg" 
-                             alt="Company Logo" 
-                             class="w-full h-auto object-contain">
-                    </div>
-                    
-                    <div id="image74" class="w-32 hidden xl:block">
-                        <img src="http://www.ds3comunicaciones.com/mikrotik/images/mikrotik_logo.jpg" 
-                             alt="Mikrotik Logo" 
+                        <img src="http://www.ds3comunicaciones.com/mikrotik/images/Logo1.jpg"
+                             alt="Company Logo"
                              class="w-full h-auto object-contain">
                     </div>
 
+                    <div id="image74" class="w-32 hidden xl:block">
+                        <img src="http://www.ds3comunicaciones.com/mikrotik/images/mikrotik_logo.jpg"
+                             alt="Mikrotik Logo"
+                             class="w-full h-auto object-contain">
+                    </div>
                     <div id="image1" class="w-32 hidden xl:block">
-                        <img src="http://www.ds3comunicaciones.com/mikrotik/images/hlt_authorized_distributor1.GIF" 
-                             alt="Authorized Distributor" 
+                        <img src="http://www.ds3comunicaciones.com/mikrotik/images/hlt_authorized_distributor1.GIF"
+                             alt="Authorized Distributor"
                              class="w-full h-auto object-contain">
                     </div>
                 </div>
-                
+
                 <!-- Hamburger menu button for mobile -->
-                <button id="mobile-menu-button" class="xl:hidden text-gray-600 focus:outline-none">
+                <button id="mobile-menu-button" class="xl:hidden text-gray-600 focus:outline-none z-1010">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
-
                 <!-- Información de contacto - Parte Central - Hidden on mobile -->
                 <div class="hidden xl:flex flex-row items-center gap-6">
                     <div id="text1" class="text-center md:text-right">
@@ -159,7 +86,7 @@
                                 </svg>
                                 <span class="font-bold">533-4339</span>
                             </div>
-                            
+
                             <!-- Celular con icono -->
                             <div class="flex items-center gap-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -167,7 +94,7 @@
                                 </svg>
                                 <span class="font-bold">99653-3223</span>
                             </div>
-                            
+
                             <!-- Email con icono -->
                             <div class="flex items-center gap-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -177,7 +104,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div id="text2" class="hidden md:flex items-center gap-1 border-l-2 border-gray-200 pl-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -186,15 +113,14 @@
                         <span class="font-bold" style="font-family: Verdana;">Lima, PERU</span>
                     </div>
                 </div>
-
                 <!-- Productos - Parte derecha -->
                 <div class="hidden xl:flex items-center justify-center gap-4">
-                    <form name="form1" method="get" action="https://www.ds3comunicaciones.com/find.html" 
+                    <form name="form1" method="get" action="https://www.ds3comunicaciones.com/find.html"
                         enctype="application/x-www-form-urlencoded" class="flex items-center">
                         <input type="hidden" name="cx" value="partner-pub-9265252540298851:f2549i3fi60" />
                         <input type="hidden" name="cof" value="FORID:10" />
                         <input type="hidden" name="ie" value="ISO-8859-1" />
-                        
+
                         <div class="relative flex items-center">
                             <input
                                 name="q"
@@ -215,21 +141,21 @@
                     </form>
                     <div id="image2" class="w-24 hover:scale-105 transition-transform duration-200">
                         <a href="#" class="block" title="Gateway Antennas">
-                            <img src="http://www.ds3comunicaciones.com/mikrotik/images/gateway-antennas.gif" 
-                                alt="Gateway Antennas" 
+                            <img src="http://www.ds3comunicaciones.com/mikrotik/images/gateway-antennas.gif"
+                                alt="Gateway Antennas"
                                 class="w-full h-auto object-contain max-h-16">
                         </a>
                     </div>
                 </div>
-                
+
                 <!-- Mobile search - Only visible on mobile -->
                 <div class="xl:hidden flex items-center">
-                    <form name="form1-mobile" method="get" action="https://www.ds3comunicaciones.com/find.html" 
+                    <form name="form1-mobile" method="get" action="https://www.ds3comunicaciones.com/find.html"
                         enctype="application/x-www-form-urlencoded" class="flex items-center">
                         <input type="hidden" name="cx" value="partner-pub-9265252540298851:f2549i3fi60" />
                         <input type="hidden" name="cof" value="FORID:10" />
                         <input type="hidden" name="ie" value="ISO-8859-1" />
-                        
+
                         <div class="relative flex items-center">
                             <input
                                 name="q"
@@ -250,26 +176,26 @@
                     </form>
                 </div>
             </div>
-            
+
+            <div id="overlay" class="overlay"></div>
+
             <!-- Mobile menu content -->
-            <div id="mobile-menu" class="mobile-menu xl:hidden bg-gray-50 px-4">
-                <div class="flex flex-col space-y-4">
+            <div id="mobile-menu" class="mobile-menu xl:hidden">
+                <div class="flex flex-col space-y-4 p-4">
                     <!-- Hidden logos in mobile header -->
                     <div class="flex items-center gap-4">
                         <div id="image74-mobile" class="w-24">
-                            <img src="http://www.ds3comunicaciones.com/mikrotik/images/mikrotik_logo.jpg" 
-                                 alt="Mikrotik Logo" 
+                            <img src="http://www.ds3comunicaciones.com/mikrotik/images/mikrotik_logo.jpg"
+                                 alt="Mikrotik Logo"
                                  class="w-full h-auto object-contain">
                         </div>
-
                         <div id="image1-mobile" class="w-24">
-                            <img src="http://www.ds3comunicaciones.com/mikrotik/images/hlt_authorized_distributor1.GIF" 
-                                 alt="Authorized Distributor" 
+                            <img src="http://www.ds3comunicaciones.com/mikrotik/images/hlt_authorized_distributor1.GIF"
+                                 alt="Authorized Distributor"
                                  class="w-full h-auto object-contain">
                         </div>
                     </div>
-                    
-                    <!-- Contact info in mobile menu -->
+
                     <div id="text1-mobile" class="text-left">
                         <div class="wpmd flex flex-col space-y-3">
                             <!-- Teléfono fijo con icono -->
@@ -279,7 +205,7 @@
                                 </svg>
                                 <span class="font-bold">533-4339</span>
                             </div>
-                            
+
                             <!-- Celular con icono -->
                             <div class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -287,7 +213,7 @@
                                 </svg>
                                 <span class="font-bold">99653-3223</span>
                             </div>
-                            
+
                             <!-- Email con icono -->
                             <div class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -295,7 +221,7 @@
                                 </svg>
                                 <a href="mailto:netperu100@hotmail.com" class="hover:text-blue-600 underline">netperu100@hotmail.com</a>
                             </div>
-                            
+
                             <!-- Location -->
                             <div class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -306,16 +232,16 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Gateway Antennas in mobile menu -->
                     <div id="image2-mobile" class="w-24 hover:scale-105 transition-transform duration-200">
                         <a href="#" class="block" title="Gateway Antennas">
-                            <img src="http://www.ds3comunicaciones.com/mikrotik/images/gateway-antennas.gif" 
-                                alt="Gateway Antennas" 
+                            <img src="http://www.ds3comunicaciones.com/mikrotik/images/gateway-antennas.gif"
+                                alt="Gateway Antennas"
                                 class="w-full h-auto object-contain max-h-16">
                         </a>
                     </div>
-                    
+
                     <!-- Iframe for mobile menu -->
                     <div class="w-full">
                         <iframe
@@ -332,17 +258,18 @@
                 </div>
             </div>
         </nav>
-        
+
         <script>
             // Mobile menu toggle
             document.getElementById('mobile-menu-button').addEventListener('click', function() {
                 const mobileMenu = document.getElementById('mobile-menu');
+                const overlay = document.getElementById('overlay');
                 mobileMenu.classList.toggle('active');
-                
-                // Toggle aria-expanded attribute
+                overlay.classList.toggle('active');
+
                 const isExpanded = this.getAttribute('aria-expanded') === 'true';
                 this.setAttribute('aria-expanded', !isExpanded);
-                
+
                 // Change icon based on state
                 const icon = this.querySelector('svg');
                 if (!isExpanded) {
@@ -351,20 +278,18 @@
                     icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
                 }
             });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
+
+            // Close mobile menu when clicking on overlay
+            document.getElementById('overlay').addEventListener('click', function() {
                 const mobileMenu = document.getElementById('mobile-menu');
                 const menuButton = document.getElementById('mobile-menu-button');
-                
-                if (!mobileMenu.contains(event.target) && !menuButton.contains(event.target) && mobileMenu.classList.contains('active')) {
-                    mobileMenu.classList.remove('active');
-                    menuButton.setAttribute('aria-expanded', 'false');
-                    const icon = menuButton.querySelector('svg');
-                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
-                }
+                mobileMenu.classList.remove('active');
+                this.classList.remove('active');
+                menuButton.setAttribute('aria-expanded', 'false');
+                const icon = menuButton.querySelector('svg');
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
             });
-            
+
             // Adjust iframe height when window resizes
             window.addEventListener('resize', function() {
                 const iframe = document.getElementById('rightFrame');
